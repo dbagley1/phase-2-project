@@ -5,13 +5,16 @@
 
 body {
   margin: 0;
-  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
 .profile-pic {
@@ -27,10 +30,12 @@ code {
   align-items: baseline;
 }
 
-.screen-name:hover,
-.username:hover,
-.created-at:hover {
-  text-decoration: underline;
+.screen-name,
+.username,
+.created-at {
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .screen-name {
@@ -51,23 +56,28 @@ code {
   margin: 1rem 0;
   text-align: left;
   gap: 10px;
-}
-.tweet + .tweet {
-  border-top: solid 1px #ddd;
-}
-.tweet .tweet {
-  border: solid 1px #ddd;
-  border-radius: 25px;
-  padding: 10px 15px;
-  margin: 0.5rem 0;
-}
-.tweet .tweet .profile-pic {
-  width: 25px;
+
+  &+.tweet {
+    border-top: solid 1px #ddd;
+  }
+
+  .tweet {
+    border: solid 1px #ddd;
+    border-radius: 25px;
+    padding: 10px 15px;
+    margin: 0.5rem 0;
+
+    .profile-pic {
+      width: 25px;
+    }
+  }
 }
 
-.tweet-large .tweet-content {
-  margin-top: 1rem;
-  font-size: 1.5rem;
+.tweet-large {
+  .tweet-content {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+  }
 }
 
 .tweet-user {
@@ -115,6 +125,7 @@ code {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
+  // flex: 1 1 0;
 }
 
 .tweet-metrics-item-value {
@@ -150,13 +161,15 @@ code {
 
 .tweet-small {
   display: flex;
-}
-.tweet-small .tweet-user {
-  display: flex;
-  align-items: center;
-}
-.tweet-small .tweet-content {
-  font-size: 1.25rem;
+
+  .tweet-user {
+    display: flex;
+    align-items: center;
+  }
+
+  .tweet-content {
+    font-size: 1.25rem;
+  }
 }
 
 .divider {
@@ -183,6 +196,7 @@ code {
   gap: 20px;
   padding: 0 20px;
   max-width: 800px;
+  // margin: auto;
 }
 
 .main {
@@ -206,15 +220,18 @@ code {
   }
 
   .sidebar {
+    // height: calc(100px);
     width: 100%;
     height: auto;
     position: relative;
-  }
-  .sidebar nav {
-    flex-flow: row nowrap;
-    display: flex;
+
+    nav {
+      flex-flow: row nowrap;
+      display: flex;
+    }
   }
 }
+
 .sidebar-item {
   margin-bottom: 16px;
 }
@@ -229,25 +246,32 @@ code {
   display: flex;
   align-items: center;
   padding: 0.5rem 1rem;
+
   font-size: 1.25rem;
   line-height: 1em;
   text-decoration: none;
   color: black;
+
   border-radius: 50px;
   transition: all 0.2s ease-in-out;
-}
-.sidebar-item a .sidebar-icon {
-  stroke-width: 0.25px;
-}
-.sidebar-item a:hover, .sidebar-item a.active {
-  background-color: var(--twitter-blue);
-  font-weight: bold;
-  color: white;
-}
-.sidebar-item a:hover .sidebar-icon, .sidebar-item a.active .sidebar-icon {
-  fill: white;
-  stroke: white;
-  stroke-width: 0.25px;
+
+  .sidebar-icon {
+    stroke-width: 0.25px;
+  }
+
+  &:hover,
+  &.active {
+    background-color: var(--twitter-blue);
+    font-weight: bold;
+
+    color: white;
+
+    .sidebar-icon {
+      fill: white;
+      stroke: white;
+      stroke-width: 0.25px;
+    }
+  }
 }
 
 h1,
@@ -265,17 +289,19 @@ h6 {
   border: solid 1px var(--btn-color);
   border-radius: 5px;
   padding: 0.15rem 0.5rem;
+
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-}
-.edit-btn.active,
-.save-btn.active {
-  --btn-color: red;
-}
-.edit-btn:hover,
-.save-btn:hover {
-  background-color: var(--btn-color);
-  color: white;
+
+  &.active {
+    --btn-color: red;
+  }
+
+  &:hover {
+    background-color: var(--btn-color);
+    color: white;
+
+  }
 }
 
 .edit-btn {
@@ -304,9 +330,10 @@ h6 {
   justify-content: center;
   overflow: auto;
   background-color: rgba(255, 255, 255, 0.8);
-}
-.modal.open {
-  display: flex;
+
+  &.open {
+    display: flex;
+  }
 }
 
 /* Modal Content */
@@ -316,34 +343,41 @@ h6 {
   padding: 3%;
   width: 80%;
   height: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(2px 4px 20px rgba(0, 0, 0, 0.2));
+  }
 }
-.modal-content img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  filter: drop-shadow(2px 4px 20px rgba(0, 0, 0, 0.2));
-}
+
+
 
 button.slide-controls {
   height: 100%;
   flex: 1 1 0;
-}
-button.slide-controls div {
-  fill: white;
-  display: flex;
-  align-items: center;
-  flex-flow: row nowrap;
-  line-height: 1em;
-  font-weight: bold;
-  margin: 3%;
-  outline: none;
-  border-radius: 50%;
-  background: var(--twitter-blue);
-  width: 100%;
-  aspect-ratio: 1;
-}
-button.slide-controls div span {
-  width: 100%;
+
+  div {
+    fill: white;
+    display: flex;
+    align-items: center;
+    flex-flow: row nowrap;
+    line-height: 1em;
+    font-weight: bold;
+
+    margin: 3%;
+    outline: none;
+
+    border-radius: 50%;
+    background: var(--twitter-blue);
+    width: 100%;
+    aspect-ratio: 1;
+
+    span {
+      width: 100%;
+    }
+  }
 }
 
 .delete-icon svg {
@@ -351,7 +385,7 @@ button.slide-controls div span {
   cursor: pointer;
 }
 
-input[type=text] {
+input[type="text"] {
   border: solid 1px #ddd;
   border-radius: 5px 0 0 5px;
   padding: 0.25rem 0.5rem;
@@ -365,10 +399,11 @@ input[type=text] {
   padding: 0.25rem 0.5rem;
   font-weight: bold;
   transition: all 0.2s ease-in-out;
-}
-.submit-btn:hover {
-  background-color: var(--twitter-blue);
-  color: #fff;
+
+  &:hover {
+    background-color: var(--twitter-blue);
+    color: #fff;
+  }
 }
 
 .add-form,
@@ -382,17 +417,18 @@ input[type=text] {
   padding: 0;
   display: flex;
   align-items: center;
-}
-.form-inputs input,
-.form-inputs select {
-  border: none;
-  outline: none;
-  background: none;
-  font-size: 1rem;
-  font-weight: 400;
-  color: #333;
-  padding: 0rem 0.75rem;
-  margin: 0;
+
+  input,
+  select {
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #333;
+    padding: 0rem 0.75rem;
+    margin: 0;
+  }
 }
 
 .list-header {
@@ -408,9 +444,8 @@ input[type=text] {
   padding: 1rem;
   border: solid 1px #ddd;
   gap: 20px;
-}
-.list-link:hover {
-  color: var(--twitter-blue);
-}
 
-/*# sourceMappingURL=index.css.map */
+  &:hover {
+    color: var(--twitter-blue);
+  }
+}
