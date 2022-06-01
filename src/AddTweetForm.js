@@ -46,7 +46,7 @@ function AddTweetForm(props) {
       <form onSubmit={handleSubmit}>
         <div className='add-form'>
           <div className="form-inputs">
-            <input type="text" onChange={handleInputChange} value={idInput} placeholder="Enter Tweet ID or URL" />
+            <label><strong>Tweet ID/URL</strong> <input type="text" onChange={handleInputChange} value={idInput} placeholder="Enter Tweet ID or URL" /></label>
             <select id='list-input' onChange={handleSelectChange} value={listInput}>
               <option value="">All</option>
               {lists.map((list) => (

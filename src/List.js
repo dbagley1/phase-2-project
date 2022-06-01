@@ -26,10 +26,10 @@ function List() {
 
   return (
     <div>
-      <AddTweetForm listInput={listId} />
       <div className="list-header">
         <h1>{list.name || 'List Not Found'}<span style={{ fontWeight: 300 }}> | {list?.tweets?.length || 0} Tweets</span></h1>
       </div>
+      <AddTweetForm listInput={listId} />
       {filteredTweets?.length && <TweetList tweets={filteredTweets} />}
       {/* {JSON.stringify(list)} */}
     </div>

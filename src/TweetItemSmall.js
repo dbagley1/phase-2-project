@@ -70,6 +70,11 @@ function TweetItemSmall(props) {
         )}
         <div className="tweet-metrics">
           <div className="tweet-metrics-item">
+            <ReplyIcon />
+            <span className="tweet-metrics-item-value">{reply_count}</span>
+            <span className="tweet-metrics-item-label">Replies</span>
+          </div>
+          <div className="tweet-metrics-item">
             <RetweetIcon />
             <span className="tweet-metrics-item-value">{retweet_count}</span>
             <span className="tweet-metrics-item-label">Retweets</span>
@@ -78,11 +83,6 @@ function TweetItemSmall(props) {
             <LikeIcon />
             <span className="tweet-metrics-item-value">{like_count}</span>
             <span className="tweet-metrics-item-label">Likes</span>
-          </div>
-          <div className="tweet-metrics-item">
-            <ReplyIcon />
-            <span className="tweet-metrics-item-value">{reply_count}</span>
-            <span className="tweet-metrics-item-label">Replies</span>
           </div>
           <a className="tweet-metrics-item" href={tweetURL} target="_blank">
             <LinkIcon />

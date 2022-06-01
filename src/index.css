@@ -27,6 +27,12 @@ code {
   align-items: baseline;
 }
 
+.screen-name,
+.username,
+.created-at {
+  width: auto;
+  flex-shrink: 0;
+}
 .screen-name:hover,
 .username:hover,
 .created-at:hover {
@@ -48,12 +54,13 @@ code {
 .tweet {
   max-width: 600px;
   padding: 1rem 0;
-  margin: 1rem 0;
+  margin-bottom: 1rem;
   text-align: left;
   gap: 10px;
 }
 .tweet + .tweet {
   border-top: solid 1px #ddd;
+  margin: 1rem 0;
 }
 .tweet .tweet {
   border: solid 1px #ddd;
@@ -163,6 +170,7 @@ code {
   font-size: 1rem;
   margin-right: 0.25rem;
   color: var(--mid-gray);
+  width: auto;
 }
 
 .created-at {
@@ -182,11 +190,13 @@ code {
   display: flex;
   gap: 20px;
   padding: 0 20px;
-  max-width: 800px;
+  max-width: 900px;
 }
 
 .main {
   flex: 1 1 0;
+  border-left: solid 1px #ddd;
+  padding: 20px;
 }
 
 .sidebar {
@@ -200,19 +210,38 @@ code {
   top: 0px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
+  .profile-pic-col {
+    display: none;
+  }
+
   .app {
     flex-flow: column nowrap;
+    gap: 0;
+  }
+
+  .main {
+    border: none;
+    padding: 0;
   }
 
   .sidebar {
     width: 100%;
     height: auto;
     position: relative;
+    padding: 10px 0;
   }
   .sidebar nav {
     flex-flow: row nowrap;
     display: flex;
+  }
+
+  .tweet .tweet-content {
+    font-size: 1rem;
+  }
+
+  .form-inputs label strong {
+    display: none;
   }
 }
 .sidebar-item {
@@ -327,6 +356,9 @@ h6 {
 button.slide-controls {
   height: 100%;
   flex: 1 1 0;
+  outline: none;
+  border: none;
+  opacity: 0.5;
 }
 button.slide-controls div {
   fill: white;
@@ -338,8 +370,8 @@ button.slide-controls div {
   margin: 3%;
   outline: none;
   border-radius: 50%;
-  background: var(--twitter-blue);
-  width: 100%;
+  background: black;
+  width: 75%;
   aspect-ratio: 1;
 }
 button.slide-controls div span {
@@ -379,9 +411,10 @@ input[type=text] {
 .form-inputs {
   border: solid 1px #ddd;
   border-radius: 5px 0 0 5px;
-  padding: 0;
+  padding-left: 10px;
   display: flex;
   align-items: center;
+  width: 100%;
 }
 .form-inputs input,
 .form-inputs select {
